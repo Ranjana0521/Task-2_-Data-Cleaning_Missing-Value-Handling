@@ -29,8 +29,6 @@ Both datasets were loaded using Pandas and inspected to understand their structu
 Missing values were detected using:
 `df.isnull().sum()`
 
-This helped identify columns with null entries.
-
 ### 3. Visualize Missing Data
 
 Simple bar charts were created to visualize the number of missing values in each column.
@@ -48,20 +46,4 @@ For categorical columns, missing values were replaced using the **Mode (most fre
 
 ### 6. Remove Highly Missing Columns
 
-Columns having extremely high missing values (more than 50%) were removed to maintain data quality.
-
-### 7. Dataset Validation
-
-After cleaning, the dataset was rechecked to confirm that missing values were handled properly.
-
-### 8. Before vs After Comparison
-
-The dataset size and missing value count were compared before and after cleaning to verify improvements in data quality.
-
----
-
-## Results
-
-* Missing values were successfully handled
-* Dataset became cleaner and more consistent
-* Improved data quality for further analysis and machine learning tasks
+Columns having extremely high missing values were removed to maintain data quality.
