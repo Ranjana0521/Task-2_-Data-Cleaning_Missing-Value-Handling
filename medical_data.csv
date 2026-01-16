@@ -1,0 +1,16 @@
+Patient_ID,Age,Gender,AppointmentDay,Diabetes,Hypertension,Alcoholism,NoShow
+1,25,F,2024-01-10,No,No,No,No
+2,60,M,2024-01-11,Yes,Yes,No,Yes
+3,45,F,2024-01-12,,No,No,No
+4,,M,2024-01-13,Yes,Yes,,Yes
+5,30,F,2024-01-14,No,,No,No
+6,72,M,2024-01-15,Yes,Yes,Yes,
+7,55,F,2024-01-16,,No,No,Yes
+8,40,M,2024-01-17,No,No,,No
+9,,F,2024-01-18,Yes,,Yes,Yes
+10,65,M,2024-01-19,Yes,Yes,Yes,No
+11,28,F,2024-01-20,No,No,No,
+12,50,M,2024-01-21,,Yes,,Yes
+13,35,F,2024-01-22,No,No,No,No
+14,80,M,2024-01-23,Yes,Yes,Yes,
+15,,F,2024-01-24,,No,No,Yes

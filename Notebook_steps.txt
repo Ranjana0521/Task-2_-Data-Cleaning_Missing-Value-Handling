@@ -1,0 +1,100 @@
+# Task 2: Data Cleaning & Missing Value Handling
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# -------------------- HOUSE PRICES DATASET --------------------
+
+print("=== HOUSE PRICES DATASET ===\n")
+
+# Step 1: Load dataset
+house_df = pd.read_csv("house_prices_dataset.csv")
+print("STEP 1: Dataset Loaded")
+print(house_df.head(), "\n")
+
+# Step 2: Check missing values
+print("STEP 2: Missing Values BEFORE Cleaning")
+print(house_df.isnull().sum(), "\n")
+
+# Step 3: Numerical Imputation
+house_df['Area_sqft'] = house_df['Area_sqft'].fillna(house_df['Area_sqft'].mean())
+house_df['Bedrooms'] = house_df['Bedrooms'].fillna(house_df['Bedrooms'].median())
+house_df['Bathrooms'] = house_df['Bathrooms'].fillna(house_df['Bathrooms'].median())
+house_df['Price'] = house_df['Price'].fillna(house_df['Price'].mean())
+print("STEP 3: Numerical Missing Values Filled\n")
+
+# Step 4: Categorical Imputation
+house_df['Location'] = house_df['Location'].fillna(house_df['Location'].mode()[0])
+print("STEP 4: Categorical Missing Values Filled\n")
+
+# Step 5: Remove columns with extremely high missing values
+house_df.dropna(thresh=len(house_df)*0.5, axis=1, inplace=True)
+print("STEP 5: High Missing Columns Checked\n")
+
+# Step 6: Validation after cleaning
+print("STEP 6: Missing Values AFTER Cleaning")
+print(house_df.isnull().sum(), "\n")
+
+# Step 7: Compare before vs after
+original_house = pd.read_csv("house_prices_dataset.csv")
+print("STEP 7: Dataset Size Comparison")
+print("Before Cleaning:", original_house.shape)
+print("After Cleaning:", house_df.shape, "\n")
+
+# Save cleaned dataset
+house_df.to_csv("cleaned_house_prices_dataset.csv", index=False)
+print("Cleaned House Prices dataset saved as 'cleaned_house_prices_dataset.csv'\n")
+
+# Visualize missing values
+house_df.isnull().sum().plot(kind='bar')
+plt.title("Missing Values - House Prices Dataset")
+plt.xlabel("Columns")
+plt.ylabel("Count")
+plt.show()
+
+# -------------------- MEDICAL APPOINTMENT DATASET --------------------
+
+print("\n=== MEDICAL APPOINTMENT DATASET ===\n")
+
+# Step 1: Load dataset
+medical_df = pd.read_csv("medical_appointment_no_shows.csv")
+print("STEP 1: Dataset Loaded")
+print(medical_df.head(), "\n")
+
+# Step 2: Check missing values
+print("STEP 2: Missing Values BEFORE Cleaning")
+print(medical_df.isnull().sum(), "\n")
+
+# Step 3: Numerical Imputation
+medical_df['Age'] = medical_df['Age'].fillna(medical_df['Age'].median())
+print("STEP 3: Numerical Missing Values Filled\n")
+
+# Step 4: Categorical Imputation
+medical_df['Gender'] = medical_df['Gender'].fillna(medical_df['Gender'].mode()[0])
+medical_df['No_Show'] = medical_df['No_Show'].fillna(medical_df['No_Show'].mode()[0])
+print("STEP 4: Categorical Missing Values Filled\n")
+
+# Step 5: Remove columns with extremely high missing values
+medical_df.dropna(thresh=len(medical_df)*0.5, axis=1, inplace=True)
+print("STEP 5: High Missing Columns Checked\n")
+
+# Step 6: Validation after cleaning
+print("STEP 6: Missing Values AFTER Cleaning")
+print(medical_df.isnull().sum(), "\n")
+
+# Step 7: Compare before vs after
+original_medical = pd.read_csv("medical_appointment_no_shows.csv")
+print("STEP 7: Dataset Size Comparison")
+print("Before Cleaning:", original_medical.shape)
+print("After Cleaning:", medical_df.shape, "\n")
+
+# Save cleaned dataset
+medical_df.to_csv("cleaned_medical_dataset.csv", index=False)
+print("Cleaned Medical dataset saved as 'cleaned_medical_dataset.csv'\n")
+
+# Visualize missing values
+medical_df.isnull().sum().plot(kind='bar')
+plt.title("Missing Values - Medical Appointments Dataset")
+plt.xlabel("Columns")
+plt.ylabel("Count")
+plt.show()
